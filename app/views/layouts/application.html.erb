@@ -8,9 +8,31 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+    <header>
+      <% if user_signed_in? %>
+      <!--ログイン時に表示-->
+      <li>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </li>
+
+      <% else %>
+
+　　　<!--ログアウト時に表示-->
+      <li>
+        <%= link_to "Sign Up", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Log in", new_user_session_path %>
+      </li>
+      <% end %>
+    </header>
+
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>
