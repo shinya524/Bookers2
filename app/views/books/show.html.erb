@@ -1,9 +1,12 @@
+<%= render 'new', book: @book %>
+
+
 <h1>Book detail</h1>
 
 <div>
 
-  <p>image:<%= image_tag 'no_image.jpg' %></p>
-  <p>name:<%= @book.user.name %></p>
+  <p>image:<%= image_tag @book.user.get_profile_image(100,100) %></p>
+  <p>name:<%= link_to user_path(@user.id) do %> <%= @book.user.name %> <% end %></p>
   <p>Title:<%= link_to book_path(@book.id) do %><%= @book.title %><% end %></p>
   <p>Opinion:<%= @book.body %></p>
 

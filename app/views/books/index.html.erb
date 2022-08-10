@@ -1,16 +1,8 @@
-<h1>Books</h1>
+<!--ユーザー情報-->
+<!--<= render 'users/show', user: @user %>-->
 
-<% @books.each do |book| %>
+<!--投稿機能-->
+<%= render 'new', book: @book %>
 
-<div>
-
-  <p>image:<%= image_tag 'no_image.jpg' %></p>
-  <p>name:<%= book.user.name %></p>
-
-  <p>Title:<%= link_to book_path(book.id) do %><%= book.title %></p>
-  <% end %>
-
-  <p>Opinion:<%= book.body %></p>
-</div>
-
-<% end %>
+<!--投稿一覧画面-->
+<%= render 'list', books: @books %>

@@ -1,1 +1,19 @@
+<!--ユーザー情報-->
+<!--<= render 'show', user: @user %>-->
+
+<!--投稿機能-->
+<%= render 'books/new', book: @book %>
+
+
 <h1>Users</h1>
+
+<% @users.each do |user| %>
+
+<div>
+
+    <p>image:<%= image_tag 'no_image.jpg' %></p>
+    <p>name:<%= user.name %></p>
+
+    <p>show:<%= link_to 'show', user_path(user.id) %></p>
+</div>
+<% end %>
