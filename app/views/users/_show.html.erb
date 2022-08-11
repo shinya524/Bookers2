@@ -1,7 +1,9 @@
 <h1>User info</h1>
+
 <div>
-  <!--<p><= image_tag book.user.get_profile_image(100,100) %></p>-->
+  <p><%= image_tag user.get_profile_image(100,100) %></p>
   <p>name:<%= user.name %></p>
   <p>introduction:<%= user.introduction %></p>
-  <p><%= link_to "profile update", edit_user_path %></p>
+  <p><%= link_to "profile update", edit_user_path(user.id) %></p>
 </div>
+

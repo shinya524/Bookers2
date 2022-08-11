@@ -1,3 +1,15 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> error prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li>
+        <%= message %>
+      </li>
+      <% end %>
+  </ul>
+<% end %>
+
+
 <h2>Editing Book</h2>
 <%= form_with model: @book do |f| %>
 
@@ -10,6 +22,6 @@
   <%= f.submit "Update Book" %><br>
 
   <%= link_to "Show", book_path %>
-  <%= link_to 'Back', user_path(current_user.id) %>
+  <%= link_to 'Back', books_path %>
 
   <% end %>

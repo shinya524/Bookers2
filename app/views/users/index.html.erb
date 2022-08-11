@@ -1,9 +1,10 @@
 <!--ユーザー情報-->
-<!--<= render 'show', user: @user %>-->
+<%= render 'show', user: @user %>
 
 <!--投稿機能-->
 <%= render 'books/new', book: @book %>
 
+<!--ユーザー一覧画面/Users-->
 
 <h1>Users</h1>
 
@@ -11,7 +12,7 @@
 
 <div>
 
-    <p>image:<%= image_tag 'no_image.jpg' %></p>
+    <p>image:<%= image_tag user.get_profile_image(100,100) %></p>
     <p>name:<%= user.name %></p>
 
     <p>show:<%= link_to 'show', user_path(user.id) %></p>
