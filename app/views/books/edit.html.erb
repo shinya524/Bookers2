@@ -9,19 +9,25 @@
   </ul>
 <% end %>
 
-
-<h2>Editing Book</h2>
-<%= form_with model: @book do |f| %>
-
-  <label class = "inputTitle">Title</label><br>
-  <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title" %><br>
-
-  <label class = "inputOpinion">Opinion</label><br>
-  <%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion" %><br>
-
-  <%= f.submit "Update Book" %><br>
-
+<div class ="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <h1>Editing Book</h1>
+  <%= form_with model: @book do |f| %>
+    <form assept-charset ="UTF-8" metod ="post">
+      <div class ="form-group">
+        <label class = "inputTitle">Title</label><br>
+        <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:"Title" %><br>
+      </div>
+      <div class ="form-group">
+        <label class = "inputOpinion">Opinion</label><br>
+        <%= f.text_area :body, autofocus: true, id:"inputOpinion", placeholder:"Opinion" %><br>
+      </div>
+      <div class ="form-group">
+        <%= f.submit "Update Book" %><br>
+      </div>
+    </form>
+    <% end %>
   <%= link_to "Show", book_path %>
+  |
   <%= link_to 'Back', books_path %>
+</div>
 
-  <% end %>

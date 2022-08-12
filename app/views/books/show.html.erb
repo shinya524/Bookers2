@@ -1,27 +1,54 @@
-<h1>User info</h1>
-<div>
-  <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p>name:<%= @book.user.name %></p>
-  <p>introduction:<%= @book.user.introduction %></p>
-  <p><%= link_to "profile update", user_path(current_user) %></p>
+<div class ="col-md-3">
+  <h2>User info</h2>
+    <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+    <table class ="table">
+      <tbody>
+        <tr></tr>
+        <tr>
+          <th>name</th>
+          <th><%= @book.user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= @book.user.introduction %></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class ="row">
+      <%= link_to user_path(current_user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+      <% end %>
+    </div>
+
+  <%= render 'new', book: @books %>
+</div>
+
+<div class ="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+
+  <table class ="table table-hover table-inverse">
+    <tbody>
+      <tr>
+        <td><%= image_tag @book.user.get_profile_image(100,100) %><br>
+        <%= link_to user_path(@users.id) do %><%= @users.name %><% end %></td>
+        <td><%= link_to book_path(@book.id) do %><%= @book.title %><% end %></td>
+        <td><%= @book.body %></td>
+
+        <% if @book.user == current_user %>
+        <td>
+          <p class="btn btn-sm btn-success">
+          <%= link_to "Edit", edit_book_path(@book.id) %>
+          </p>
+        </td>
+        <td>
+          <p class ="btn btn-sm btn-danger">
+            <%= link_to "destroy", book_path(@book), method: :delete, "data-confirm" =>"本当に削除しますか？" %>
+          </p>
+        </td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
-
-<%= render 'new', book: @books %>
-
-
-<h1>Book detail</h1>
-
-<div>
-
-  <p>image:<%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p>name:<%= link_to user_path(@users.id) do %><%= @book.user.name %><% end %></p>
-  <p>Title:<%= link_to book_path(@book.id) do %><%= @book.title %><% end %></p>
-  <p>Opinion:<%= @book.body %></p>
-
-  <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book.id) %>
-    <%= link_to "destroy", book_path(@book), method: :delete %>
-  <% end %>
-</div>

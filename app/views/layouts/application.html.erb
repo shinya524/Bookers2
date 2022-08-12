@@ -5,48 +5,78 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/d092c09fc5.js" crossorigin="anonymous"></script>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
     <header>
-      <% if user_signed_in? %>
+      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container">
+          <a class = "navbar-brand" href ="/">
+            <span>Bookers</span>
+          </a>
+          <button class ="navbar-toggler collapsed" type ="button" data-toggle ="collapse" data-target ="#navbarNavDropdown"
+                  aria-controls ="navbarNavDropdown" aria-expanded ="false" aria-label ="Toggle navigation">
+            <span class ="navbar-toggler-icon"></span>
+          </button>
+          <div class ="collapse navbar-collapse" id ="navbarNavDropdown">
+            <ul class ="navbar-nav ml-auto">
+            <% if user_signed_in? %>
       <!--ログイン時に表示-->
-      <li>
-        <%= link_to '投稿フォーム', new_book_path %>
-      </li>
-      <li>
-        <%= link_to 'Home',user_path(current_user.id) %>
-      </li>
-      <li>
-        <%= link_to 'Users', users_path %>
-      </li>
-      <li>
-        <%= link_to 'Books', books_path %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
+              <li class ="nav-item">
+                <%= link_to user_path(current_user.id) do %>
+                <i class="fas fa-home" style ="color: white;"></i>Home
+                <% end %>
+              </li>
+              <li class ="nav-item">
+                <%= link_to users_path do %>
+                <i class="fas fa-users" style ="color: white;"></i>Users
+                <% end %>
+              </li>
+              <li class ="nav-item">
+                <%= link_to books_path do %>
+                <i class="fas fa-book-open" style ="color: white;"></i>Books
+                <% end %>
+              </li>
+              <li class ="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete do  %>
+                <i class="fas fa-sign-out-alt" style ="color: white;"></i>Log out
+                <% end %>
+              </li>
 
-      <% else %>
+            <% else %>
 
 　　　<!--ログアウト時に表示-->
-　　　<li>
-　　　  <%= link_to "Home", '/' %>
-　　　</li>
-　　　<li>
-　　　  <%= link_to "About", '/home/about' %>
-　　　</li>
-      <li>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-      <% end %>
+              <li class ="nav-item">
+                <%= link_to '/' do %>
+                <i class="fas fa-home" style ="color: white;"></i>Home
+                <% end %>
+              </li>
+              <li class ="nav-item">
+                <%= link_to '/home/about' do %>
+                <i class="fas fa-link" style ="color: white;"></i>About
+                <% end %>
+              </li>
+              <li class ="nav-item">
+                <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus" style ="color: white;"></i>Sign in
+                <% end %>
+              </li>
+              <li class ="nav-item">
+                <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt" style ="color: white;"></i>Log in
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <main>
@@ -55,7 +85,21 @@
         <%= content_tag :div, value, class: key %>
       </div>
       <% end %>
-    <%= yield %>
+      <div class ="container px-5 px-sm-0">
+        <div class ="row">
+          <%= yield %>
+        </div>
+      </div>
     </main>
+
+    <footer>
+      <div class ="container mt-5">
+        <div class ="row">
+          <div class ="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

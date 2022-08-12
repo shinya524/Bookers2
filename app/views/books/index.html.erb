@@ -9,11 +9,12 @@
   </ul>
 <% end %>
 
+<div class ="col-md-3">
 <!--ユーザー情報-->
 <%= render 'users/show', user: @user %>
-
 <!--投稿機能-->
 <%= render 'new', book: @book %>
+</div>
 
 <!--ユーザー詳細画面-->
 <%= render 'list', books: @books %>
