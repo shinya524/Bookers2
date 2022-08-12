@@ -34,6 +34,12 @@
       <% else %>
 
 　　　<!--ログアウト時に表示-->
+　　　<li>
+　　　  <%= link_to "Home", '/' %>
+　　　</li>
+　　　<li>
+　　　  <%= link_to "About", '/home/about' %>
+　　　</li>
       <li>
         <%= link_to "Sign Up", new_user_registration_path %>
       </li>
@@ -44,6 +50,11 @@
     </header>
 
     <main>
+      <div class = "Notification">
+        <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: key %>
+      </div>
+      <% end %>
     <%= yield %>
     </main>
   </body>
