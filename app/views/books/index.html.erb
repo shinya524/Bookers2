@@ -1,3 +1,4 @@
+<div class ="errors_explanation">
 <% if @book.errors.any? %>
   <%= @book.errors.count %> errors prohibited this obj from being saved:
   <ul>
@@ -8,13 +9,15 @@
       <% end %>
   </ul>
 <% end %>
-
-<div class ="col-md-3">
-<!--ユーザー情報-->
-<%= render 'users/show', user: @user %>
-<!--投稿機能-->
-<%= render 'new', book: @book %>
 </div>
 
+<div class ="row">
+  <div class ="col-md-3">
+<!--ユーザー情報-->
+  <%= render 'users/show', user: @user %>
+<!--投稿機能-->
+  <%= render 'new', book: @book %>
+  </div>
 <!--ユーザー詳細画面-->
-<%= render 'list', books: @books %>
+  <%= render 'list', books: @books %>
+</div>

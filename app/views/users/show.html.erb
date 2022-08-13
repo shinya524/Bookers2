@@ -1,11 +1,13 @@
+<div class ="row">
 <!--Home-->
-<div class ="col-md-3">
+  <div class ="col-md-3">
 <!--ユーザー情報-->
-<%= render 'show', user: @user %>
+  <%= render 'show', user: @user %>
 
 <!--投稿機能-->
-<%= render 'books/new', book: @book %>
-</div>
+  <%= render 'books/new', book: @book %>
+  </div>
 
 <!--ユーザー詳細画面-->
-<%= render 'books/list', books: @books %>
+  <%= render 'books/list', books: @books %>
+</div>
