@@ -13,24 +13,22 @@
   </ul>
 <% end %>
  <%= form_with model: @user do |f| %>
-      <form enctype ="multipart/form-data" accept-chaset ="UTF-8" method ="post">
-        <div class ="form-group">
-          <label class = "inputName">Name</label><br>
-          <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name" %><br>
-        </div>
-        <div class ="form-group">
-          <label class = "inputImage">Image</label><br>
-          <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %><br>
-        </div>
-        <div class ="form-group">
-          <label class = "inputIntroduction">Introduction</label><br>
-          <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"Introduction" %><br>
-        </div>
-        <div class ="form-group">
-          <%= f.submit "Update User", class: "btn btn-secondary" do %>
-          <% end %>
-        </div>
-    </form>
+      <div class ="form-group">
+        <label class = "inputName">Name</label><br>
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name" %><br>
+      </div>
+      <div class ="form-group">
+        <label class = "inputImage">Image</label><br>
+        <%= f.file_field :profile_image, placeholder: "Image", accept: "image/*" %><br>
+      </div>
+      <div class ="form-group">
+        <label class = "inputIntroduction">Introduction</label><br>
+        <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"Introduction" %><br>
+      </div>
+      <div class ="form-group">
+        <%= f.submit "Update User", class: "btn btn-secondary" do %>
+        <% end %>
+      </div>
     <% end %>
-</div>
+  </div>
 </div>
